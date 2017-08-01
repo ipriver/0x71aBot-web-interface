@@ -1,0 +1,12 @@
+{
+  "name": "0x71aBot-Web-Interface",
+  "version": "1.0.0",
+  "description": "django web app",
+  "main": "index.js",
+  "repository": "https://github.com/ipriver/0x71aBot-Web-Interface",
+  "author": "ipriver",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}
