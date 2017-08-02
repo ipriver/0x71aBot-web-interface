@@ -2,7 +2,7 @@
 {% block header_styles %}
   {% load staticfiles %}
   <link rel="stylesheet" type="text/css" href="{% static 'botFactory/styles/index.css' %}">
-  
+  <script src="{% static 'botFactory/js/index.js' %}" defer></script>
 {% endblock %}
 {% block content %}
   {% if authenticated %}
@@ -27,17 +27,8 @@
        <div style="display: inline-block;width:40px; height:40px; background-color:red;">
         <p> Выключить </p>
       </div>
-    {% endfor %}
-    <script>
 
-    $("#del_bot").click( function() {
-      
-      //alert($('#del_bot').text());
-    $.post("/del_bot/", {}, function () {
-       location.reload(); 
-    });
-    });
-  </script>
+    {% endfor %}
   {% else %}
     <main>
       <div class="description">

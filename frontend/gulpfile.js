@@ -1,11 +1,12 @@
-'use strict';
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const imagemin = require('gulp-imagemin');
 const cleanCSS = require('gulp-clean-css');
 const htmlmin = require('gulp-htmlmin');
-
+const uglify = require('gulp-uglify');
+const pump = require('pump');
+const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function () {
   return gulp.src('./src/**/*.scss')
@@ -17,9 +18,10 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function () {
   gulp.watch('./src/**/*.scss', ['sass']);
-  gulp.watch('./src/**/images/*', ['imagemin'])
-  gulp.watch('./src/**/*.css', ['minify-css'])
-  gulp.watch('src/**/*.html', ['minify-html'])
+  gulp.watch('./src/**/images/*', ['imagemin']);
+  gulp.watch('./src/**/*.css', ['minify-css', ['autoprefixer']]);
+  gulp.watch('./src/**/*.html', ['minify-html']);
+  gulp.watch('./src/**/js/*.js', ['minify-js']);
 });
 
 gulp.task('imagemin', () =>
@@ -43,3 +45,21 @@ gulp.task('minify-css',() => {
     .pipe(gulp.dest('./build'));
 });
 
+gulp.task('minify-js', function (cb) {
+  pump([
+        gulp.src('./src/**/js/*.js'),
+        uglify(),
+        gulp.dest('./build')
+    ],
+    cb
+  );
+});
+
+gulp.task('autoprefixer', () =>
+    gulp.src('./src/**/*.css')
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('./build'))
+);
