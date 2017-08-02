@@ -4,19 +4,15 @@ const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
 const imagemin = require('gulp-imagemin');
 const cleanCSS = require('gulp-clean-css');
+const htmlmin = require('gulp-htmlmin');
 
-const srcFolder = './src'
-const buildFolder = './build'
-const appFolder = '/botFactory'
-const staticFolder = appFolder + '/static'
-const templatesFolder = appFolder + '/templates'
 
 gulp.task('sass', function () {
-  return gulp.src(srcFolder + staticFolder + '/styles/scss/*.scss')
+  return gulp.src('./src/**/*.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(srcFolder + staticFolder + '/styles'));
+    .pipe(gulp.dest('./src'));
 });
 
 gulp.task('sass:watch', function () {
@@ -24,22 +20,23 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('imagemin', () =>
-    gulp.src(srcFolder + staticFolder + '/images/*')
+    gulp.src('./src/**/images/*')
         .pipe(imagemin())
-        .pipe(gulp.dest(buildFolder + appFolder))
+        .pipe(gulp.dest('./build'))
 );
 
-gulp.task('minify-css',() => {
-  return gulp.src(srcFolder + appFolder + '/**/*.css')
-    .pipe(sourcemaps.init())
-    .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(buildFolder + appFolder));
+gulp.task('minify-html', function() {
+  return gulp.src('src/**/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('./build'));
 });
 
 /*Don't forget to remove sourcemaps before the real production*/
-gulp.task('production', function() {
-  return gulp.src(srcFolder + staticFolder + '/styles/*.css')
-    .pipe(gulp.dest(buildFolder + '/del/'));
-
+gulp.task('minify-css',() => {
+  return gulp.src('./src/**/*.css')
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./build'));
 });
+
