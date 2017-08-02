@@ -15,8 +15,11 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./src'));
 });
 
-gulp.task('sass:watch', function () {
-  gulp.watch(staticFolder + '/styles/scss/*.scss', ['sass']);
+gulp.task('watch', function () {
+  gulp.watch('./src/**/*.scss', ['sass']);
+  gulp.watch('./src/**/images/*', ['imagemin'])
+  gulp.watch('./src/**/*.css', ['minify-css'])
+  gulp.watch('src/**/*.html', ['minify-html'])
 });
 
 gulp.task('imagemin', () =>
