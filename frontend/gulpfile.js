@@ -7,6 +7,7 @@ const htmlmin = require('gulp-htmlmin');
 const uglify = require('gulp-uglify');
 const pump = require('pump');
 const autoprefixer = require('gulp-autoprefixer');
+const runSequence = require('run-sequence');
 
 gulp.task('sass', function () {
   return gulp.src('./src/**/*.scss')
@@ -16,12 +17,17 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./src'));
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', function (cb) {
   gulp.watch('./src/**/*.scss', ['sass']);
   gulp.watch('./src/**/images/*', ['imagemin']);
-  gulp.watch('./src/**/*.css', ['minify-css', 'autoprefixer']);
+  gulp.watch('./src/**/*.css', ['syncWatchCss']);
   gulp.watch('./src/**/*.html', ['minify-html']);
   gulp.watch('./src/**/js/*.js', ['minify-js']);
+  cb;
+});
+
+gulp.task('syncWatchCss', function(cb) {
+  runSequence('minify-css', 'autoprefixer', cb);
 });
 
 gulp.task('imagemin', () =>
@@ -62,4 +68,5 @@ gulp.task('autoprefixer', () =>
             cascade: false
         }))
         .pipe(gulp.dest('./build'))
+
 );
