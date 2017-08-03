@@ -9,6 +9,11 @@ const pump = require('pump');
 const autoprefixer = require('gulp-autoprefixer');
 const runSequence = require('run-sequence');
 
+gulp.task('fontsIntoBuild', function() {
+  return gulp.src('./src/**/fonts/*')
+    .pipe(gulp.dest('./build'));
+});
+
 gulp.task('sass', function () {
   return gulp.src('./src/**/*.scss')
     .pipe(sourcemaps.init())
@@ -23,6 +28,7 @@ gulp.task('watch', function (cb) {
   gulp.watch('./src/**/*.css', ['syncWatchCss']);
   gulp.watch('./src/**/*.html', ['minify-html']);
   gulp.watch('./src/**/js/*.js', ['minify-js']);
+  gulp.watch('./src/**/fonts/*', ['fontsIntoBuild']);
   cb;
 });
 
