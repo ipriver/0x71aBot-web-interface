@@ -19,7 +19,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
   gulp.watch('./src/**/*.scss', ['sass']);
   gulp.watch('./src/**/images/*', ['imagemin']);
-  gulp.watch('./src/**/*.css', ['minify-css', ['autoprefixer']]);
+  gulp.watch('./src/**/*.css', ['minify-css', 'autoprefixer']);
   gulp.watch('./src/**/*.html', ['minify-html']);
   gulp.watch('./src/**/js/*.js', ['minify-js']);
 });
