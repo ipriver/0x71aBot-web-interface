@@ -6,59 +6,50 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from .models import Account, Bot
 from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView
 
 
-def index(request):
+
+class IndexView(TemplateView):
     template_name = 'botFactory/index.html'
     context = {
         'authenticated': False,
         'form': None,
     }
-    if request.user.is_authenticated:
-        context['message'] = 'Hello, ' + request.user.username
-        context['authenticated'] = True
-        context['form'] = AddBotForm()
-        user = request.user
-        account = Account.objects.get(user=user)
-        bot_list = Bot.objects.filter(account=account)
-        context['bot_list'] = bot_list
-    else:
-        context['form'] = SignInForm()
-    return render(request, template_name, context)
 
+    def get(self, request):
+        if request.user.is_authenticated:
+            self.context['message'] = 'Hello, ' + request.user.username
+            self.context['authenticated'] = True
+            self.context['form'] = AddBotForm()
+            user = request.user
+            account = Account.objects.get(user=user)
+            bot_list = Bot.objects.filter(account=account)
+            self.context['bot_list'] = bot_list
+        else:
+            self.context['authenticated'] = False
+            self.context['form'] = SignInForm()
+        return render(request, self.template_name, self.context)
 
-def register(request):
-    template_name = 'botFactory/register.html'
-    context = {
-        'form': RegForm()
-    }
-    return render(request, template_name, context)
-
-
-def sign_in(request):
-    if request.method == 'POST':
+    def post(self, request):
         form = SignInForm(request.POST)
         if form.is_valid():
             username = request.POST['login']
             password = request.POST['password']
             user_login(request, username, password)
-    return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/')
 
 
-def user_logout(request):
-    logout(request)
-    return HttpResponseRedirect('/')
+class RegisterView(TemplateView):
+    template_name = 'botFactory/register.html'
+    form_class = RegForm
 
+    def get(self, request):
+        form = self.form_class(initial={'key': 'value'})
+        return render(request, self.template_name, {'form': form})
 
-def user_login(request, username, password):
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-
-
-def user_register(request):
-    if request.method == 'POST':
-        form = RegForm(request.POST)
+    def post(self, request):
+        form = self.form_class(request.POST)
         if form.is_valid():
             login = request.POST['login']
             email = request.POST['email']
@@ -70,8 +61,17 @@ def user_register(request):
                 account = Account(user=user, bot_count=0)
                 account.save()
                 user_login(request, login, password)
+        return redirect('botFactory:index')
+
+def user_logout(request):
+    logout(request)
     return redirect('botFactory:index')
 
+
+def user_login(request, username, password):
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
 
 def add_new_bot(request):
     if request.method == 'POST':
