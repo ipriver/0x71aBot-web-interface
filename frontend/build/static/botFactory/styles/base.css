@@ -1,0 +1,32 @@
+@font-face {
+  font-family: Droid;
+  src: url(../fonts/DisposableDroidBB_bld.ttf); }
+
+header {
+  height: 50px;
+  background: #595959; }
+
+h1 {
+  font-size: 4rem;
+  font-family: Droid, Arial; }
+
+a {
+  color: #12CD00; }
+  a:hover {
+    color: #0C7200;
+    text-decoration: none; }
+
+footer {
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background: #595959; }
+  footer a {
+    margin-right: 20px; }
+    footer a::before {
+      content: '\f09b';
+      font-family: "FontAwesome"; }
