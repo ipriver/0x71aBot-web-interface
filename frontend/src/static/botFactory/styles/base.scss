@@ -2,12 +2,37 @@
   font-family: Droid;
   src: url(../fonts/DisposableDroidBB_bld.ttf);
 }
+
+@font-face {
+  font-family: Moscow;
+  src: url(../fonts/moscow.ttf);
+}
+
 $footheadHeight: 50px;
 $footheadColor: #595959;
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  min-height: 100%;
+  padding-bottom: $footheadHeight + 20px;
+}
 
 header {
   height: $footheadHeight;
   background: $footheadColor;
+  .head_title {
+    font-size: 3.5rem;
+    color:white;
+    font-family: Droid, Arial;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 h1 {
@@ -17,21 +42,58 @@ h1 {
 
 a {
   color: #12CD00;
-  &::hover {
-    color: #0C7200;
+  &:hover {
+    color: #00FF1A;
     text-decoration: none;
   }
 }
+
+main {
+  p {
+    font-family: Moscow, Arial;
+  }
+}
+
 footer {
-  height: $footheadHeight;
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  height: $footheadHeight;
+  width: 100%;
   background: $footheadColor;
+
+  p {
+    margin: 0; /* TOFIX: otkyda tyt margin 5? */
+    color: white;
+  }
   a {
-    margin-right: 20px;
+    margin-right: 10px;
     &::before {
+      margin-right: 3px;
       content: '\f09b';
       font-family: "FontAwesome";
     }
   }
+}
+
+.bForm {
+    margin: 0px auto;
+    padding: 25px;
+    width: min-content;
+    border: 3px solid $footheadColor;
+    border-radius: 10px;
+    background-color: #E7E7E7;
+}
+
+.button {
+  border: 1px solid black;
+  color: #12CD00;
+  background-color: $footheadColor;
+  border-color: #595959;
+    &:hover {
+      color: #0C7200;
+      background-color: #D8D8D8;
+    }
 }

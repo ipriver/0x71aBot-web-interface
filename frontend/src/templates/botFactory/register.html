@@ -4,9 +4,14 @@
   <link rel="stylesheet" type="text/css" href="{% static 'botFactory/styles/register.css' %}">
 {% endblock %}
 {% block content %}
-  <form class="signin_form form-horizontal" action="{% url 'botFactory:register' %}" method="post">
+  <form class="bForm reg_form container text-center" action="{% url 'botFactory:register' %}" method="post">
     {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Зарегистрироваться"/>
+    {% for elem in form %}
+      <div class="rField">
+        {{ elem.label }}
+        {{ elem }}
+      </div>
+    {% endfor %}
+    <input class="button" type="submit" value="Зарегистрироваться"/>
   </form>
 {% endblock %}

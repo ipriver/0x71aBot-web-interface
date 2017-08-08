@@ -2,9 +2,28 @@
   font-family: Droid;
   src: url(../fonts/DisposableDroidBB_bld.ttf); }
 
+@font-face {
+  font-family: Moscow;
+  src: url(../fonts/moscow.ttf); }
+
+html {
+  height: 100%; }
+
+body {
+  margin: 0;
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 70px; }
+
 header {
   height: 50px;
   background: #595959; }
+  header .head_title {
+    font-size: 3.5rem;
+    color: white;
+    font-family: Droid, Arial; }
+    header .head_title:hover {
+      text-decoration: none; }
 
 h1 {
   font-size: 4rem;
@@ -13,20 +32,53 @@ h1 {
 a {
   color: #12CD00; }
   a:hover {
-    color: #0C7200;
+    color: #00FF1A;
     text-decoration: none; }
 
+main p {
+  font-family: Moscow, Arial; }
+
 footer {
-  height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
   background: #595959; }
+  footer p {
+    margin: 0;
+    /* TOFIX: otkyda tyt margin 5? */
+    color: white; }
   footer a {
-    margin-right: 20px; }
+    margin-right: 10px; }
     footer a::before {
+      margin-right: 3px;
       content: '\f09b';
       font-family: "FontAwesome"; }
+
+.bForm {
+  margin: 0px auto;
+  padding: 25px;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  border: 3px solid #595959;
+  border-radius: 10px;
+  background-color: #E7E7E7; }
+
+.button {
+  border: 1px solid black;
+  color: #12CD00;
+  background-color: #595959;
+  border-color: #595959; }
+  .button:hover {
+    color: #0C7200;
+    background-color: #D8D8D8; }

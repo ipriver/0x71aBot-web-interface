@@ -28,7 +28,7 @@ gulp.task('watch', function (cb) {
   gulp.watch('./src/**/*.css', ['syncWatchCss']);
   gulp.watch('./src/**/*.html', ['minify-html']);
   gulp.watch('./src/**/js/*.js', ['minify-js']);
-  gulp.watch('./src/**/fonts/*', ['fontsIntoBuild']);
+  gulp.watch('./src/**/fonts/*', ['fontsIntoBuild']); //Doesn't look if font wasnt uploaded after gulp watch function was started
   cb;
 });
 

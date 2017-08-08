@@ -3,7 +3,7 @@
   height: 200px; }
 
 .description {
-  margin: 40px 0px;
+  margin-top: 40px;
   min-height: 300px; }
   .description img {
     float: left;
@@ -13,8 +13,16 @@
   margin-bottom: 10px; }
 
 .advice {
+  padding: 7px;
   position: relative;
-  left: 100px;
+  left: 80px;
   top: 10px;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
   line-height: 1;
-  font-size: 1rem; }
+  font-size: 1rem;
+  line-height: 0.3;
+  background-color: white;
+  border: 2px solid #595959;
+  border-radius: 5px; }
