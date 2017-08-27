@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from .models import Account, Bot
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import (TemplateView, DetailView, CreateView, 
+from django.views.generic import (ListView, TemplateView, DetailView, CreateView, 
 UpdateView, DeleteView)
 
 

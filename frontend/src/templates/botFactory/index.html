@@ -17,17 +17,9 @@
       <input class="button" type="submit" value="Добавить" />
     </form>
     {% for bot in bot_list %}
-      <p id="{{ forloop.counter0 }}">{{ forloop.counter0 }} {{ bot.channel_name }}</p>
-      <div id="del_bot" style="display: inline-block;width:40px; height:40px; background-color:red;">
-        <p> Delete </p>
+      <div class="bot">
+        <p>{{ forloop.counter0 }} {{ bot.channel_name }}</p>
       </div>
-       <div style="display: inline-block;width:40px; height:40px; background-color:red;">
-        <p> Включить </p>
-      </div>
-       <div style="display: inline-block;width:40px; height:40px; background-color:red;">
-        <p> Выключить </p>
-      </div>
-
     {% endfor %}
   {% else %}
     

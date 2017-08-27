@@ -26,3 +26,23 @@
   background-color: white;
   border: 2px solid #595959;
   border-radius: 5px; }
+
+.bot {
+  margin-bottom: 10px; }
+  .bot p {
+    margin: 0; }
+  .bot .botControls {
+    display: inline-block;
+    font-family: "FontAwesome"; }
+    .bot .botControls button {
+      background-color: white; }
+    .bot .botControls .runButton::before {
+      content: "\f04b"; }
+    .bot .botControls .stopButton::before {
+      content: '\f04d '; }
+    .bot .botControls .restartButton::before {
+      content: '\f01e'; }
+    .bot .botControls .editButton::before {
+      content: '\f013'; }
+    .bot .botControls .removeButton::before {
+      content: '\f00d'; }

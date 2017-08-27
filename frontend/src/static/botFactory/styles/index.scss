@@ -32,3 +32,32 @@ $footheadColor: #595959;
   border: 2px solid $footheadColor;
   border-radius: 5px;
 }
+.bot {
+  margin-bottom: 10px;
+  p {
+    margin: 0;
+  }
+  .botControls {
+    display: inline-block;
+    font-family: "FontAwesome";
+    button {
+      background-color: white;
+
+    }
+    .runButton::before {
+        content: "\f04b";
+    }
+    .stopButton::before {
+        content: '\f04d '
+    }
+    .restartButton::before {
+        content: '\f01e'
+    }
+    .editButton::before {
+        content: '\f013'
+    }
+    .removeButton::before {
+        content: '\f00d'
+    }
+  }
+}
