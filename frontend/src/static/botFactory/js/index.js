@@ -5,6 +5,10 @@
 });*/
 
 document.addEventListener("DOMContentLoaded", function(event) {
+
+	/*var signInForm = document.querySelector('.signin_form');
+	signInForm.addEventListener('submit', ValidateSignInForm);*/
+
     var listT = document.querySelectorAll('.bot');
     listT.forEach(function(element) {
     	var controlPanel = new BotControlsDom();
@@ -26,9 +30,20 @@ authButton.onclick = function() {
 function BotControlsDom(options) {
 
 	function AddControlButton(options) {
+
+		function addEvents(elem, events) {
+			events.forEach(function(evObj) {
+				elem.addEventListener(evObj.event, evObj.func)
+			})
+			return elem;
+		}
+
 		function render() {
 			var elem = document.createElement('button');
 			elem.className = options.class;
+			if ('events' in options) {
+				elem = addEvents(elem, options.events);
+			}
 			return elem;
 		}
 		return render();
@@ -62,6 +77,20 @@ function BotControlsDom(options) {
 
 		var removeButton = new AddControlButton({
 			class: 'removeButton',
+			events: [
+				{
+					event: 'click', 
+					func: function() {
+						alert('remove Bot event');
+					} 
+				},
+				{
+					event: 'mouseover', 
+					func: function() {
+						alert('mouseover event');
+					} 
+				},
+			],
 		});
 		elem.append(removeButton);
 
@@ -69,4 +98,3 @@ function BotControlsDom(options) {
 	}
 	return render();
 }
-
