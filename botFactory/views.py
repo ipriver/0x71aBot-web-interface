@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import SignInForm, RegForm, AddBotForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
@@ -124,3 +124,14 @@ def del_bot(request):
         account.save()
 
     return redirect('botFactory:index')
+
+
+def bot(request):
+    template_name = 'botFactory/bot.html'
+    context = {}
+    return render(request, template_name, context)
+
+def bot_run(request):
+    import subprocess
+    proc = subprocess.Popen('./UserBots/bot &', shell=True)
+    return HttpResponse(str(proc.pid))
