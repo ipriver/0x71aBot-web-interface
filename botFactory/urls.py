@@ -24,6 +24,6 @@ urlpatterns = [
     	views.user_logout,
     	name='sign_in'
     ),
-    # url(r'^add_new_bot/$', IndexView.add_new_bot, name='add_new_bot'),
+    url(r'^add_new_bot/$', views.add_new_bot, name='add_new_bot'),
     # url(r'^del_bot/$', IndexView.del_bot, name='del_bot'),
 ]

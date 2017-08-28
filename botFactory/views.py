@@ -44,31 +44,7 @@ class IndexView(TemplateView):
         return HttpResponseRedirect('/')
 
 
-    # def add_new_bot(self, request):
-    #     form = AddBotForm(request.POST)
-    #     if form.is_valid():
-    #         channel_name = request.POST['channel_name']
-    #         user = request.user
-    #         account = Account.objects.get(user=user)
-    #         if account.bot_count < 5:
-    #             bot = Bot(account=account, channel_name=channel_name)
-    #             bot.bot_start()
-    #             account.bot_count += 1
-    #             account.save()
-    #             bot.save()
-    #     return redirect('botFactory:index')
-
-    # @csrf_exempt
-    # def del_bot(self, request):
-    #     if request.is_ajax:
-    #         user = request.user
-    #         account = Account.objects.get(user=user)
-    #         account.bot_count -= 1
-    #         bot_list = Bot.objects.filter(account=account)
-    #         Bot.objects.filter(id=bot_list[0].id).delete()
-    #         account.save()
-
-    #     return redirect('botFactory:index')
+   
 
 
 class RegisterView(TemplateView):
@@ -121,3 +97,30 @@ class DeleteBot(DeleteView):
 
 class UpdateBot(UpdateView):
     pass
+
+
+def add_new_bot(request):
+    form = AddBotForm(request.POST)
+    if form.is_valid():
+        channel_name = request.POST['channel_name']
+        user = request.user
+        account = Account.objects.get(user=user)
+        if account.bot_count < 5:
+            bot = Bot(account=account, channel_name=channel_name)
+            bot.bot_start()
+            account.bot_count += 1
+            account.save()
+            bot.save()
+    return redirect('botFactory:index')
+
+@csrf_exempt
+def del_bot(request):
+    if request.is_ajax:
+        user = request.user
+        account = Account.objects.get(user=user)
+        account.bot_count -= 1
+        bot_list = Bot.objects.filter(account=account)
+        Bot.objects.filter(id=bot_list[0].id).delete()
+        account.save()
+
+    return redirect('botFactory:index')
