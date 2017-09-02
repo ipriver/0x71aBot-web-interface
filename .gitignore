@@ -1,6 +1,8 @@
 UserBots/
 node_modules/
 *.sqlite3
+*.db
+dist/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
