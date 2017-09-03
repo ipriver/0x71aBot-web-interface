@@ -5,14 +5,22 @@
     <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 {% endblock %}
 
-{% block header_menu %}
-    <nav>
-        <ul class="nav navbar-nav">
-            <li><a href="">Войти</a></li>
-        </ul>
-    </nav>
+{% block header_nav %}
+    <ul class="col-md-10 col-sm-12 nav justify-content-end align-items-center">
+        <li class="nav-item"><a href="" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="" class="nav-link">Logout</a></li>
+    </ul>
 {% endblock %}
 
 {% block maincontent %}
-    <a class="login-twitch" href="">Подключить бота к Twitch</a>
+    <!-- <a class="login-twitch" href="">Подключить бота к Twitch</a>
+    <iframe frameborder="0"
+        scrolling="yes"
+        id="ipriver"
+        src="http://www.twitch.tv/ipriver/chat"
+        height="500"
+        width="350"
+        style="float:right;"
+        >
+    </iframe> -->
 {% endblock %}

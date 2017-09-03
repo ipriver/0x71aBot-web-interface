@@ -8,6 +8,11 @@
   src: url(../fonts/FontAwesome.otf);
 }
 
+@font-face {
+  font-family: RemachineScript;
+  src: url(../fonts/RemachineScript.ttf);
+}
+
 $footer-height: 100px;
 
 html {
@@ -21,24 +26,26 @@ body {
 }
 
 header {
-    height: 100px;
     background-color: #7711AA;
-
-
-    .head-title {
-        font-family: Droid, Arial;
-        font-size: 3.5rem;
-        color: #FFFFFF;
-        &:hover {
-            text-decoration: none;
-        }
-    }
     nav {
-        li {
-            list-style-type: none;
+        a {
+            margin-left: 15px;
+            font-size: 1.7rem;
+            color: #FFFFFF;
+            &:hover {
+                text-decoration: none;
+                color: #D5A3FF;
+            }
+        }
+        .logo {
+            margin:0;
+            font-family: Droid, Arial;
+            font-size: 3.5rem;
+            &:hover {
+                color: #FFFFFF;
+            }
         }
     }
-
 }
 
 footer {
@@ -46,16 +53,23 @@ footer {
     bottom: 0;
     width: 100%;
     height: $footer-height;
-    background-color: #D3D3D3;
-    .copyrights {
-        a:before {
-            content: '\f09b';
-            font-family: FontAwesome;
+    background-color: #E7E7E7;
+    font-size: 1.5rem;
+    p {
+        font-size: 3rem;
+        font-family: RemachineScript, Arial;
+    }
+    a {
+        color: #7711AA;
+        &:hover {
+            text-decoration: none;
+            color: #A174C6;
         }
     }
     nav {
-
         li {
+            margin-left: 10px;
+            font-size: 3rem;
             list-style-type: none;
             a {
                 font-family: FontAwesome;
