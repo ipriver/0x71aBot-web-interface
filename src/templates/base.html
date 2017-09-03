@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>0x71aBot</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+    <script defer src="{% static 'scripts/base.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    {% block header_styles %}
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="header container">
+            <a class="head-title" href="{% url 'webinter:index' %}">0x71aBot</a>
+            {% block header_menu %}
+            {% endblock %}
+        </div>
+    </header>
+    <main class="container">
+        {% block maincontent %}
+        {% endblock %}
+    </main>
+    <footer>
+        <div class="container">
+            <div class="copyrights">
+                <a href="https://github.com/ipriver/0x71aBot">0x71a Twitch Bot</a>
+                <p>, 2017</p>
+            </div>
+            <nav class="navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/ipriver"></a></li>
+                    <li><a href="https://twitch.tv/ipriver"></a></li>
+                    <li><a href="https://twitter.com/ipriver"></a></li>
+                    <li><a href="https://vk.com/id95107266"></a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

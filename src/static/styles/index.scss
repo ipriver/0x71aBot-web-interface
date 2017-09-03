@@ -1,0 +1,13 @@
+.login-twitch {
+    padding: 20px;
+    height: 200px;
+    width: 200px;
+    color: #FFFFFF;
+    font-size: 2rem;
+    background-color: #8402D5;
+    &:hover {
+        color: #FFFFFF;
+        background-color: #61009E;
+        text-decoration: none;
+    }
+}

@@ -1,0 +1,80 @@
+@font-face {
+  font-family: Droid;
+  src: url(../fonts/DisposableDroidBB_bld.ttf);
+}
+
+@font-face {
+  font-family: FontAwesome;
+  src: url(../fonts/FontAwesome.otf);
+}
+
+$footer-height: 100px;
+
+html {
+    font-size: 10px;
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: $footer-height;
+}
+
+header {
+    height: 100px;
+    background-color: #7711AA;
+
+
+    .head-title {
+        font-family: Droid, Arial;
+        font-size: 3.5rem;
+        color: #FFFFFF;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    nav {
+        li {
+            list-style-type: none;
+        }
+    }
+
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $footer-height;
+    background-color: #D3D3D3;
+    .copyrights {
+        a:before {
+            content: '\f09b';
+            font-family: FontAwesome;
+        }
+    }
+    nav {
+
+        li {
+            list-style-type: none;
+            a {
+                font-family: FontAwesome;
+
+                &[href*="github.com"]:before {
+                    content: '\f09b';
+                }
+                &[href*="twitter.com"]:before {
+                    content: '\f099';
+                }
+                &[href*="vk.com"]:before {
+                    content: '\f189';
+                }
+                &[href*="twitch.tv"]:before {
+                    content: '\f1e8';
+                }
+            }
+        }
+    }
+}
+
+

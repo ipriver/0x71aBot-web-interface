@@ -7,7 +7,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
     entry: {
-        main: './src/static/scripts/main.js',
+        base: './src/static/scripts/base.js',
     },
     output: {
         filename: '[name].js',

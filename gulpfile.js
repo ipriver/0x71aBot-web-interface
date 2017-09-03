@@ -10,8 +10,8 @@ const runSequence = require('run-sequence');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
-gulp.task('fontsIntoBuild', function() {
-  return gulp.src('./src/static/fonts/**/*')
+gulp.task('fonts', function() {
+  return gulp.src('./src/**/fonts/*')
     .pipe(gulp.dest('./dist'));
 });
 
@@ -58,8 +58,12 @@ gulp.task('minify-html', function() {
     .pipe(gulp.dest('./dist'));
 });
 
+gulp.task('robots', function() {
+    return gulp.src('src/robots.txt')
+        .pipe(gulp.dest('./dist'));
+});
 
-gulp.task('build', ['sass', 'imagemin', 'minify-html', 'fontsIntoBuild']);
+gulp.task('build', ['sass', 'imagemin', 'minify-html', 'fonts', 'robots']);
 
 
 
