@@ -13,12 +13,17 @@
   src: url(../fonts/RemachineScript.ttf);
 }
 
+@font-face {
+  font-family: SteagislerRegular;
+  src: url(../fonts/SteagislerRegular.otf);
+}
+
 $footer-height: 100px;
 
 html {
-    font-size: 10px;
     position: relative;
     min-height: 100%;
+    font-size: 10px;
 }
 
 body {
@@ -29,8 +34,10 @@ header {
     background-color: #7711AA;
     nav {
         a {
+            text-shadow: 1px 1px 2px black;
             margin-left: 15px;
-            font-size: 1.7rem;
+            font-family: SteagislerRegular, Arial, sans-serif;
+            font-size: 2rem;
             color: #FFFFFF;
             &:hover {
                 text-decoration: none;
@@ -39,8 +46,8 @@ header {
         }
         .logo {
             margin:0;
-            font-family: Droid, Arial;
-            font-size: 3.5rem;
+            font-family: Droid, Arial, sans-serif;
+            font-size: 3.8rem;
             &:hover {
                 color: #FFFFFF;
             }
