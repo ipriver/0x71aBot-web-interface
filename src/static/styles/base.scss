@@ -32,22 +32,27 @@ body {
 
 header {
     background-color: #7711AA;
+
     nav {
+
         a {
-            text-shadow: 1px 1px 2px black;
             margin-left: 15px;
             font-family: SteagislerRegular, Arial, sans-serif;
             font-size: 2rem;
+            text-shadow: 1px 1px 2px #000000;
             color: #FFFFFF;
+
             &:hover {
                 text-decoration: none;
                 color: #D5A3FF;
             }
         }
+
         .logo {
             margin:0;
             font-family: Droid, Arial, sans-serif;
             font-size: 3.8rem;
+
             &:hover {
                 color: #FFFFFF;
             }
@@ -59,37 +64,78 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: $footer-height;
-    background-color: #E7E7E7;
+    background-color: #8E8E8E;
     font-size: 1.5rem;
+
     p {
-        font-size: 3rem;
-        font-family: RemachineScript, Arial;
+        color: #FFFFFF;
+        text-shadow: 1px 1px 2px #000000;
+        font-size: 2rem;
+        font-family: SteagislerRegular, Arial, sans-serif;
     }
-    a {
-        color: #7711AA;
-        &:hover {
-            text-decoration: none;
-            color: #A174C6;
+
+    .project-links {
+
+        padding: 5px 40px;
+        a {
+            color: #FFFFFF;
+            font-family: SteagislerRegular, Arial, sans-serif;
+
+            &:hover {
+                color: #CFCFCF;
+            }
         }
+
+        .issue {
+
+            &:before {
+                margin-right: 5px;
+                font-family: FontAwesome;
+                content: '\f06a';
+
+            }
+        }
+
+        .git {
+
+            &:before {
+                margin-right: 5px;
+                font-family: FontAwesome;
+                content: '\f09b';
+            }
+        }
+       border-right: 1px solid #656565;
     }
-    nav {
+
+    .contacts {
+        padding: 5px 40px;
+
         li {
             margin-left: 10px;
             font-size: 3rem;
             list-style-type: none;
+
             a {
+                color: #222222;
                 font-family: FontAwesome;
+
+                &:hover {
+                    text-decoration: none;
+                    color: #656565;
+                }
 
                 &[href*="github.com"]:before {
                     content: '\f09b';
                 }
+
                 &[href*="twitter.com"]:before {
                     content: '\f099';
                 }
+
                 &[href*="vk.com"]:before {
                     content: '\f189';
                 }
+
                 &[href*="twitch.tv"]:before {
                     content: '\f1e8';
                 }

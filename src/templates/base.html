@@ -20,35 +20,45 @@
     <header>
         <nav class="container">
             <div class="row">
-                <a href="" class="col-lg-2 col-md-2 col-sm-12 logo">0x71aBot</a>
+                <a href="{% url 'webinter:index' %}" class="col-lg-2 col-md-2 col-sm-12 logo">0x71aBot</a>
                 {% block header_nav %}
                 {% endblock %}
             </div>
         </nav>
     </header>
+
     <main class="container">
         {% block maincontent %}
         {% endblock %}
     </main>
+
     <footer>
         <div class="container">
             <div class="row">
-                <div class="project-links col">
-                    <p>Source code:</p>
-                    <a href="https://github.com/ipriver/0x71aBot-Web-Interface">0x71aBot web interface</a>
-                    <a href="https://github.com/ipriver/0x71aBot">0x71a Twitch Bot</a>
+                <div class="col-lg-3 col-md-6 col-sm-12 project-links">
+                    <p>Website:</p>
+                    <ul class="nav flex-column">
+                        <li class="issue nav-item"><a href="https://github.com/ipriver/0x71aBot-Web-Interface/issues/new">Submit an issue</a></li>
+                        <li class="git nav-item"><a href="https://github.com/ipriver/0x71aBot-Web-Interface">GitHub Repo</a></li>
+                    </ul>
                 </div>
-                <nav class="">
-                    <p class="col">Contact me:</p>
-                    <ul class="nav justify-content-end align-items-center">
+                <div class="col-lg-3 col-md-6 col-sm-12 project-links">
+                    <p>Bot:</p>
+                    <ul class="nav flex-column">
+                        <li class="issue nav-item"><a href="https://github.com/ipriver/0x71aBot/issues/new">Submit an issue</a></li>
+                        <li class="git nav-item"><a href="https://github.com/ipriver/0x71aBot">GitHub Repo</a></li>
+                    </ul>
+                </div>
+                <div class="contacts col-lg-3 col-md-6 col-sm-12">
+                    <p class="">Contact me:</p>
+                    <ul class="nav">
                         <li><a href="https://github.com/ipriver"></a></li>
                         <li><a href="https://twitch.tv/ipriver"></a></li>
                         <li><a href="https://twitter.com/ipriver"></a></li>
                         <li><a href="https://vk.com/id95107266"></a></li>
                     </ul>
-                </nav>
+                </div>
             </div>
-            <span class="d-flex justify-content-center col">ipriver, 2017</span>
         </div>
     </footer>
 </body>
