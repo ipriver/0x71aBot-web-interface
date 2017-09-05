@@ -12,26 +12,49 @@
 {% block header_nav %}
     <ul class="col-md-10 col-sm-12 nav justify-content-end align-items-center">
         {% if user.is_authenticated %}
-            <li class="nav-item col-lg-2 col-md-2 col-sm-12"><a href="
-            {% url 'webinter:logout' %}" class="nav-link">Log out</a></li>
+            <li class="nav-item col-lg-1 col-md-2 col-sm-12"><a href="
+            {% url 'webinter:logout' %}" class="nav-link">Logout</a></li>
         {% else %}
-            <li class="nav-item col-lg-2 col-md-2 col-sm-12"><a href="admin/" class="nav-link">Log in</a></li>
+            <li class="nav-item col-lg-1 col-md-2 col-sm-12"><a href="admin/" class="nav-link">Login</a></li>
         {% endif %}
     </ul>
 {% endblock %}
 
 {% block maincontent %}
     {% if user.is_authenticated %}
-        <iframe frameborder="0"
-        scrolling="yes"
-        id="ipriver"
-        src="http://www.twitch.tv/ipriver/chat"
-        height="500"
-        width="350"
-        style="float:right;"
-        >
-        </iframe>
-    {% else %}
+
+        <div class="container">
+            <div class="row">
+                <div class="bot-logs col-lg-6 col-md-6 col-sm-12">
+                    <p>Your bot log</p>
+                    <div class="bot-logs-frame frame"></div>
+                </div>
+                <div class="bot-statistics col-lg-6 col-md-6 col-sm-12">
+                    <p>Your bot statistics</p>
+                    <div class="bot-statistics-frame frame"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="chat bot-logs col-lg-6 col-md-6 col-sm-12">
+                    <p>{{ user.username }}'s chat</p>
+                    <div class="chat-frame frame"></div>
+                   <!--  <iframe frameborder="0"
+                   scrolling="yes"
+                   id="{{ user.username }}"
+                   src="http://www.twitch.tv/{{ user.username }}/chat"
+                   height="500"
+                   width="600"
+                   >
+                   </iframe> -->
+                </div>
+                <div class="news bot-logs col-lg-3 col-md-3 col-sm-12">
+                    <p>Project news</p>
+                    <div class="news-frame frame"></div>
+                </div>
+            </div>
+
+        </div>
+        {% else %}
         <div class="container-fluid presentation">
             <div class="row">
                 <div class="container">

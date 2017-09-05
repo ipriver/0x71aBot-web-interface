@@ -1,13 +1,79 @@
-.login-twitch {
-    padding: 20px;
-    height: 200px;
-    width: 200px;
-    color: #FFFFFF;
-    font-size: 2rem;
-    background-color: #8402D5;
-    &:hover {
-        color: #FFFFFF;
-        background-color: #61009E;
-        text-decoration: none;
+@font-face {
+  font-family: FontAwesome;
+  src: url(../fonts/FontAwesome.otf);
+}
+
+@font-face {
+  font-family: SteagislerRegular;
+  src: url(../fonts/SteagislerRegular.otf);
+}
+
+.bot-logs {
+    p {
+
+        &:before {
+            margin-right: 5px;
+            content: '\f27b';
+            font-family: FontAwesome;
+        }
+    }
+
+}
+
+.chat {
+    p {
+        &:before {
+            margin-right: 5px;
+            content: '\f086';
+            font-family: FontAwesome;
+        }
+    }
+}
+
+.news {
+    p {
+        &:before {
+            margin-right: 5px;
+            content: '\f21e';
+            font-family: FontAwesome;
+        }
+    }
+}
+
+.bot-statistics {
+    p {
+        &:before {
+            margin-right: 5px;
+            content: '\f080';
+            font-family: FontAwesome;
+        }
+    }
+}
+
+.bot-logs,
+.chat,
+.news,
+.bot-statistics {
+
+    margin-top: 20px;
+    .frame {
+        height: 200px;
+        border: 2px solid #000000;
+        border-top: none;
+
+    }
+    p {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        border: 2px solid #000000;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        font-size: 1.7rem;
+        font-family: SteagislerRegular, Arial, sans-serif;
+    }
+
+    .frame, p {
+        background-color: #EEEEEE;
     }
 }
