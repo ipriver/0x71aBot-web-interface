@@ -2,68 +2,27 @@
 
 {% load staticfiles %}
 {% block header_styles %}
-    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    {% if user.is_authenticated %}
+        <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'styles/index_not_auth.css' %}">
+    {% endif %}
 {% endblock %}
 
 {% block header_nav %}
     <ul class="col-md-10 col-sm-12 nav justify-content-end align-items-center">
-        <li class="nav-item col-lg-1 col-md-2 col-sm-12"><a href="" class="nav-link">Login</a></li>
-        <li class="nav-item col-lg-1 col-md-2 col-sm-12"><a href="" class="nav-link">Logout</a></li>
+        {% if user.is_authenticated %}
+            <li class="nav-item col-lg-2 col-md-2 col-sm-12"><a href="
+            {% url 'webinter:logout' %}" class="nav-link">Log out</a></li>
+        {% else %}
+            <li class="nav-item col-lg-2 col-md-2 col-sm-12"><a href="admin/" class="nav-link">Log in</a></li>
+        {% endif %}
     </ul>
 {% endblock %}
 
 {% block maincontent %}
-    <div class="container-fluid presentation">
-        <div class="row">
-            <div class="container">
-                <div class="row">
-                    <div class="info col-lg-5 col-md-5 col-sm-12">
-                        <h1>STREAM YOUR FAVORITE GAME, LET THE BOT DO HIS JOB.</h1>
-                        <p><span>0x71aBot</span> is a moderator bot for twitch without the need for your interaction. <br>
-                        No payment, download, or install required.</p>
-                        <button class="btn col-md-12 col-sm-12 connect-button">Connect with Twitch</button>
-                    </div>
-                    <div class="photo col-lg-7 col-md-7 col-sm-5">
-                        <img class="img-fluid" src="{% static 'images/robo.jpg' %}" alt="robot bot">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="features">
-            <ul class="row">
-                <li class="col-lg-4 col-md-4 col-sm-6">
-                    <h3><span class="feature-icon" icon-attr="custom"></span>Customizable</h3>
-                    <p>Customize your bot with avaliable options to fit your needs.</p>
-                </li>
-                <li class="col-lg-4 col-md-4 col-sm-6">
-
-                    <h3><span class="feature-icon" icon-attr="spam"></span>Spam filter</h3>
-                    <p>Automatically remove spam from your chat.</p>
-                </li>
-                <li class="col-lg-4 col-md-4 col-sm-6">
-                    <h3><span class="feature-icon" icon-attr="logs"></span>Logs</h3>
-                    <p>View any information about users and their messages, ban history and more.</p>
-                </li>
-                <li class="col-lg-4 col-md-4 col-sm-6">
-                    <h3><span class="feature-icon" icon-attr="easyuse"></span>Easy to use</h3>
-                    <p>Set up and manage your bot with just a few clicks.</p>
-                </li>
-                <li class="col-lg-4 col-md-4 col-sm-6">
-                    <h3><span class="feature-icon" icon-attr="free"></span>Free</h3>
-                    <p>Absolutley free to use. All features are avaliable for you.</p>
-                </li>
-                <li class="col-lg-4 col-md-4 col-sm-6">
-                    <h3><span class="feature-icon" icon-attr="opensource"></span>Open source project</h3>
-                    <p>This is an open source bot and you can help us and contribute to it. Report any bugs found or pull request your commits.</p>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- <a class="login-twitch" href="">Подключить бота к Twitch</a>
-    <iframe frameborder="0"
+    {% if user.is_authenticated %}
+        <iframe frameborder="0"
         scrolling="yes"
         id="ipriver"
         src="http://www.twitch.tv/ipriver/chat"
@@ -71,5 +30,56 @@
         width="350"
         style="float:right;"
         >
-    </iframe> -->
+        </iframe>
+    {% else %}
+        <div class="container-fluid presentation">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="info col-lg-5 col-md-5 col-sm-12">
+                            <h1>STREAM YOUR FAVORITE GAME, LET THE BOT DO HIS JOB.</h1>
+                            <p><span>0x71aBot</span> is a moderator bot for twitch without the need for your interaction. <br>
+                            No payment, download, or install required.</p>
+                            <button class="btn col-md-12 col-sm-12 connect-button">Connect with Twitch</button>
+                        </div>
+                        <div class="photo col-lg-7 col-md-7 col-sm-5">
+                            <img class="img-fluid" src="{% static 'images/robo.jpg' %}" alt="robot bot">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="features">
+                <ul class="row">
+                    <li class="col-lg-4 col-md-4 col-sm-6">
+                        <h3><span class="feature-icon" icon-attr="custom"></span>Customizable</h3>
+                        <p>Customize your bot with avaliable options to fit your needs.</p>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-sm-6">
+
+                        <h3><span class="feature-icon" icon-attr="spam"></span>Spam filter</h3>
+                        <p>Automatically remove spam from your chat.</p>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-sm-6">
+                        <h3><span class="feature-icon" icon-attr="logs"></span>Logs</h3>
+                        <p>View any information about users and their messages, ban history and more.</p>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-sm-6">
+                        <h3><span class="feature-icon" icon-attr="easyuse"></span>Easy to use</h3>
+                        <p>Set up and manage your bot with just a few clicks.</p>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-sm-6">
+                        <h3><span class="feature-icon" icon-attr="free"></span>Free</h3>
+                        <p>Absolutley free to use. All features are avaliable for you.</p>
+                    </li>
+                    <li class="col-lg-4 col-md-4 col-sm-6">
+                        <h3><span class="feature-icon" icon-attr="opensource"></span>Open source project</h3>
+                        <p>This is an open source bot and you can help us and contribute to it. Report any bugs found or pull request your commits.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
