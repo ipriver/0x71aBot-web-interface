@@ -21,6 +21,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'controlpanel',
     'webinter',
+    'news',
 
     'django.contrib.admin',
     'django.contrib.auth',
