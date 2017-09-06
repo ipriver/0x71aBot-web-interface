@@ -3,6 +3,7 @@ node_modules/
 *.sqlite3
 *.db
 dist/
+migrations/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

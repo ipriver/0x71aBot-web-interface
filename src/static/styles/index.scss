@@ -38,6 +38,27 @@
             font-family: FontAwesome;
         }
     }
+    .post {
+
+        background-color: white;
+        .date {
+
+
+        }
+        .text {
+
+        }
+        .title {
+
+        }
+        .text, .date {
+            border: none;
+            background-color: inherit;
+            &:before {
+                content: '';
+            }
+        }
+    }
 }
 
 .bot-statistics {
