@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block maincontent %}
+    <a href="{% url 'news:new_post' %}">Add +</a>
+    <br>
+    {% for post in posts %}
+        <div class="post" id="{{post.pk}}">
+            <a href="{% url 'news:view_post' post_id=post.pk %}">Edit</a>
+            <script>
+                function removePost(event) {
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'news/post/' + this.value + '/delete/');
+                    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                    xhr.send();
+
+                     xhr.onreadystatechange = function() {
+                        if (xhr.readyState != 4) return;
+                        if (xhr.status != 200) {
+                            alert(xhr.status + ': ' + xhr.statusText);
+                        } else {
+                            if (xhr.responseText == 'good') {
+                                var post = document.getElementById(this.value);
+                                post.remove();
+                                this.remove();
+                            }
+                        }
+                }.bind(this);
+
+                }
+                var del_button = document.createElement('button');
+                del_button.innerText = 'Delete';
+                del_button.value = {{ post.pk }};
+                del_button.addEventListener('click', removePost);
+
+                var post = document.getElementById({{ post.pk }});
+                post.append(del_button)
+            </script>
+            {{ post.pk }}
+            <div class="post">
+                <div class="row">
+                    <h1 class="title">{{ post.title }}</h1>
+                    <p class="date">{{ post.post_date }}</p>
+                </div>
+                <p class="text">{{ post.message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

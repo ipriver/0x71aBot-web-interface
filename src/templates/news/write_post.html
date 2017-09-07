@@ -1,6 +1,19 @@
+{% extends 'base.html' %}
+
+{% block maincontent %}
 <form action="submit_post/" method="POST">
     {% csrf_token %}
-    {{form}}
+    <table>
+        <tr>
+            <td>{{ form.title.label_tag }}</td>
+            <td>{{ form.title }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.message.label_tag }}</td>
+            <td>{{ form.message }}</td>
+        </tr>
+    </table>
     <input type="submit" value="send">
 </form>
+{% endblock %}
 

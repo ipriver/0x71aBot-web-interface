@@ -12,7 +12,7 @@ class PostManager(models.Manager):
 class Post(models.Model):
     title = models.CharField(max_length=50)
     message = models.CharField(max_length=255)
-    post_date = models.DateTimeField(default=timezone.now())
+    post_date = models.DateTimeField(default=timezone.now)
 
     objects = PostManager()
 

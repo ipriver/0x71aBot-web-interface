@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.contrib.auth import logout
-from news.views import get_news
+from news.views import get_last_five_news
 
 
 class IndexView(TemplateView):
@@ -10,7 +10,7 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['posts'] = get_news(self.request).content
+        context['posts'] = get_last_five_news()
         return context
 
 

@@ -48,9 +48,20 @@
                    </iframe> -->
                 </div>
                 <div class="news bot-logs col-lg-3 col-md-3 col-sm-12">
-                    <p>Project news</p>
+                    <p>Project news
+                    {% if request.user.is_superuser %}
+                        <a href="{% url 'news:new_post' %}">+</a>
+                        <a href="{% url 'news:get_news' %}">View all</a>
+                    {% endif %}
+                    </p>
+
                     <div class="news-frame frame">
-                        {{ posts | safe}}
+
+                        {% for post in posts %}
+                            <div class="title">{{ post.title }}</div>
+                            <div class="date">{{ post.post_date }}</div>
+                            <div class="text">{{ post.message }}</div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

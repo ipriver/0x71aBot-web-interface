@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block maincontent %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>post_id = {{ post.pk }}</p>
+        <table>
+            <tr>
+                <td>{{ form.title.label_tag }}</td>
+                <td>{{ form.title }}</td>
+                <td>{{ post.post_date |date:"r" }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.message.label_tag }}</td>
+                <td>{{ form.message }}</td>
+            </tr>
+        </table>
+        <input type="submit" value="edit">
+    </form>
+
+    <script>
+        document.querySelector('#id_title').value = "{{ post.title }}";
+        document.querySelector('#id_message').value = "{{ post.message }}";
+    </script>
+{% endblock %}
