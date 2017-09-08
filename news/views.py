@@ -5,6 +5,7 @@ from .models import Post
 from .forms import PostForm
 from django.shortcuts import get_object_or_404
 from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def admin_required(func):
     def decorator(request, *args, **kwargs):
@@ -17,7 +18,17 @@ def admin_required(func):
 @login_required
 @admin_required
 def get_news(request):
-    context = {'posts': Post.objects.all()}
+    posts_list = Post.objects.all()
+    paginator = Paginator(posts_list, 12)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    context = {'posts': posts}
     template_name = 'news/get_all_news.html'
     return render(request, template_name, context)
 

@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% load staticfiles %}
+{% block header_styles %}
+    <link rel="stylesheet" href="{% static 'styles/news/view_post.css' %}">
+{% endblock %}
+
 {% block maincontent %}
     <form action="" method="POST">
         {% csrf_token %}

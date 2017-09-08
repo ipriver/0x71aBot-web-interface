@@ -9,17 +9,6 @@
     {% endif %}
 {% endblock %}
 
-{% block header_nav %}
-    <ul class="col-md-10 col-sm-12 nav justify-content-end align-items-center">
-        {% if user.is_authenticated %}
-            <li class="nav-item col-lg-1 col-md-2 col-sm-12"><a href="
-            {% url 'webinter:logout' %}" class="nav-link">Logout</a></li>
-        {% else %}
-            <li class="nav-item col-lg-1 col-md-2 col-sm-12"><a href="admin/" class="nav-link">Login</a></li>
-        {% endif %}
-    </ul>
-{% endblock %}
-
 {% block maincontent %}
     {% if user.is_authenticated %}
 
@@ -50,8 +39,7 @@
                 <div class="news bot-logs col-lg-3 col-md-3 col-sm-12">
                     <p>Project news
                     {% if request.user.is_superuser %}
-                        <a href="{% url 'news:new_post' %}">+</a>
-                        <a href="{% url 'news:get_news' %}">View all</a>
+                        <a href="{% url 'news:get_news' %}">Moderate news</a>
                     {% endif %}
                     </p>
 
