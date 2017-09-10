@@ -46,7 +46,7 @@ def submit_post(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-    return redirect('webinter:index')
+    return redirect('news:get_news')
 
 @login_required
 @admin_required
@@ -65,5 +65,18 @@ def view_post(request, post_id):
     context = {'post': post, 'form': PostForm}
     return render(request, template_name, context)
 
+@login_required
+@admin_required
+def edit_post(request, post_id):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = get_object_or_404(Post, pk=post_id)
+            post.title = request.POST.get('title',)
+            post.message = request.POST.get('message', )
+            post.save()
+    return redirect('news:get_news')
+
 def get_last_five_news():
-    return Post.objects.all()[:5]
+    return Post.objects.five_last()
+

@@ -4,6 +4,11 @@
     border-radius: 10px;
     background-color: #F3F3F3;
     font-family: SteagislerRegular, sans-serif;
+	.title,
+	.text {
+		overflow: hidden;
+	}
+    
     .title {
     	font-size: 2.5rem;
     }
