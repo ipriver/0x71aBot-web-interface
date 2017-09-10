@@ -1,4 +1,46 @@
 .post {
     margin: 5px;
-    border: 1px solid black;
+    border: 2px solid #A51301;
+    border-radius: 10px;
+    background-color: #F3F3F3;
+    font-family: SteagislerRegular, sans-serif;
+    .title {
+    	font-size: 2.5rem;
+    }
+    .date,
+    .text {
+    	font-size: 1.5rem;
+    }
+	.date {
+		color: #6D0096;
+	}
+}
+
+.crud-button {
+	margin: 5px;
+	height: 3rem;
+	width: 5rem;
+	border: 2px solid #A51301;
+	border-radius: 8px;
+	background-color: #FF5A78;
+	color: #FFFFFF;
+	font-family: SteagislerRegular, sans-serif;
+	font-size: 1.3rem;
+	&:hover {
+		background-color: #FF5A78 + 50;
+		color: #FFFFFF;
+	}
+}
+.add-button {
+	width: 10rem;
+}
+
+.pagination {
+	margin-top: 2rem;
+	font-family: SteagislerRegular, sans-serif;
+	font-size: 1.5rem;
+	a {
+		font-size: 1.2rem;
+		color:  #FF5A78;
+	}
 }

@@ -7,11 +7,11 @@
 
 {% block maincontent %}
     <div class="container">
-        <a href="{% url 'news:new_post' %}">Add +</a>
+        <a href="{% url 'news:new_post' %}" class="btn add-button crud-button">Add +</a>
         <div class="row justify-content-center">
             {% for post in posts %}
                 <div class="post col-lg-3 col-md-3 col-sm-6" id="{{post.pk}}">
-                    <a href="{% url 'news:view_post' post_id=post.pk %}">Edit</a>
+                    <a href="{% url 'news:view_post' post_id=post.pk %}" class="btn crud-button">Edit</a>
                     <script>
                         function removePost(event) {
                             let xhr = new XMLHttpRequest();
@@ -36,6 +36,8 @@
                         }
                         var del_button = document.createElement('button');
                         del_button.innerText = 'Delete';
+                        del_button.classList.add('crud-button');
+                        del_button.classList.add('btn')
                         del_button.value = {{ post.pk }};
                         del_button.addEventListener('click', removePost);
 

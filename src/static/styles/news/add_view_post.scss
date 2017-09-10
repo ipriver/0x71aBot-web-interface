@@ -1,0 +1,30 @@
+form {
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	font-size: 1.5rem;
+    font-family: SteagislerRegular, sans-serif;
+	.post {
+		background-color: #F6F6F6;
+		padding: 2rem;
+		border: 2px solid #C100FF;
+		border-radius: 10px;
+		input {
+			margin: 10px 0;
+			border: 1px solid #C100FF;
+		}
+		.btn {
+			width: 6rem;
+			font-size: inherit;
+			&:hover {
+				background-color: #7D7D7D;
+				color: #FFFFFF;
+				border-color: #7D7D7D;
+			}
+		}
+
+		textarea {
+			border: 1px solid #C100FF;
+		}
+	}
+}
