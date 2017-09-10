@@ -1,5 +1,5 @@
 # 0x71aBot-web-interface
-![Alt text](https://pp.userapi.com/c840238/v840238567/39904/M5dnrzm6_Dc.jpg "index page snapshot")
+![Alt text](https://cs541607.userapi.com/c816730/u95107266/docs/7af2475009d8/snaphot.png?extra=VzcFaoEwU6Ae96nJSVG74VMzasFp2SmBRA6uy-cmtWKkHjzGFW0OKZii_2vIXTRIVc26mvN0qFbDuVKJecAvbRhShhyXXmKNCiOwPJ1XC0oDCagrsQT2wA "index page snapshot")
 
 # How to install?
 ## 1. JS, HTML, CSS, etc.
