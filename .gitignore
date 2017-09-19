@@ -1,7 +1,5 @@
 UserBots/
 node_modules/
-*.sqlite3
-*.db
 dist/
 migrations/
 
