@@ -4,7 +4,6 @@ from django.views.generic import TemplateView
 from django.contrib.auth import logout
 from news.views import get_last_five_news
 
-
 class IndexView(TemplateView):
     template_name = 'index.html'
 
