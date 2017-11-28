@@ -1,19 +1,37 @@
 const express = require('express');
-const path = require('path');
-const http = require('http');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+
+const indexRoute = require('./routes/index.route');
+const accountRoute = require('./routes/account.route');
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+app.use('/', indexRoute);
+app.use('/account', accountRoute);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-const port = process.env.PORT || '3000';
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-app.set('port', port);
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 
-const server = http.createServer(app);
-
-server.listen(port, () => console.log(`API running on localhost:${port}`));
+module.exports = app;

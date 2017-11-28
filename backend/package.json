@@ -4,7 +4,26 @@
   "main": "index.js",
   "author": "ipriver",
   "license": "MIT",
+  "scripts": {
+    "watch": "./node_modules/.bin/nodemon ./bin/server.js",
+    "test": "jasmine ./tests/*.spec.js",
+    "start": "node ./bin/server.js"
+  },
   "dependencies": {
-    "express": "^4.16.2"
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "debug": "^3.1.0",
+    "express": "^4.16.2",
+    "g": "^2.0.1",
+    "mongoose": "^4.13.5",
+    "morgan": "^1.9.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "install": "^0.10.2",
+    "jasmine": "^2.8.0",
+    "nodemon": "^1.12.1",
+    "npm": "^5.5.1"
   }
 }
